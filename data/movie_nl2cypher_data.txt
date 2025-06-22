@@ -1,0 +1,142 @@
+[
+    {
+        "question": "能推荐一些评分高的科幻电影吗？",
+        "answer": "MATCH (m:Movie) WHERE m.genre CONTAINS '科幻' AND m.rating > 8.5 RETURN m.title, m.rating ORDER BY m.rating DESC LIMIT 5\n解释：查询类型包含科幻且评分高于8.5的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "我想看诺兰导演的电影",
+        "answer": "MATCH (m:Movie) WHERE m.director = '克里斯托弗·诺兰' RETURN m.title, m.rating, m.release_date ORDER BY m.release_date DESC\n解释：查询导演为克里斯托弗·诺兰的所有电影，按上映时间降序排列"
+    },
+    {
+        "question": "能推荐一些适合情侣一起看的浪漫电影吗？",
+        "answer": "MATCH (m:Movie) WHERE m.genre CONTAINS '爱情' AND m.rating > 8.0 RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询类型包含爱情且评分高于8.0的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能详细介绍一下《泰坦尼克号》这部电影吗？",
+        "answer": "MATCH (m:Movie) WHERE m.title CONTAINS '泰坦尼克号' RETURN m.title, m.director, m.actors, m.genre, m.plot, m.rating, m.release_date\n解释：查询《泰坦尼克号》的详细信息，包括导演、演员、类型、剧情、评分和上映日期"
+    },
+    {
+        "question": "我想看一部90年代的香港电影",
+        "answer": "MATCH (m:Movie) WHERE m.release_date >= '1990-01-01' AND m.release_date < '2000-01-01' AND m.region CONTAINS '香港' RETURN m.title, m.rating, m.release_date ORDER BY m.rating DESC LIMIT 5\n解释：查询1990年代香港地区上映的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些关于人工智能的电影吗？",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '人工智能' OR m.plot CONTAINS 'AI' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情描述中包含人工智能或AI的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "我想看一部评分高、时长在2小时以内、最近5年上映的悬疑片",
+        "answer": "MATCH (m:Movie) WHERE m.genre CONTAINS '悬疑' AND m.rating > 8.0 AND m.duration < 120 AND m.release_date >= date() - duration('P5Y') RETURN m.title, m.rating, m.duration, m.release_date ORDER BY m.rating DESC LIMIT 5\n解释：查询类型为悬疑、评分高于8.0、时长小于120分钟、最近5年上映的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些关于音乐的电影吗？最好是传记类的",
+        "answer": "MATCH (m:Movie) WHERE m.genre CONTAINS '音乐' AND m.plot CONTAINS '传记' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询类型为音乐且剧情描述中包含传记的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "我想看一部评分高、有深度、能引发思考的电影，最好是关于社会问题的",
+        "answer": "MATCH (m:Movie) WHERE m.rating > 8.5 AND (m.plot CONTAINS '社会' OR m.plot CONTAINS '人性' OR m.plot CONTAINS '现实') RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询评分高于8.5且剧情涉及社会、人性或现实问题的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些关于战争的电影吗？最好是真实历史事件改编的",
+        "answer": "MATCH (m:Movie) WHERE m.genre CONTAINS '战争' AND m.plot CONTAINS '真实' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询类型为战争且基于真实事件改编的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些适合孩子看的教育类电影吗？",
+        "answer": "MATCH (m:Movie) WHERE m.genre CONTAINS '动画' AND m.rating > 8.0 AND m.plot CONTAINS '教育' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询类型为动画、评分高于8.0且具有教育意义的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "我想看一部关于环保主题的电影",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '环保' OR m.plot CONTAINS '环境' OR m.plot CONTAINS '生态' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及环保、环境或生态主题的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些关于旅行的电影吗？最好是能展现不同文化的",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '旅行' OR m.plot CONTAINS '文化' OR m.plot CONTAINS '异国' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及旅行、文化或异国风情的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "我想看一部关于美食的电影",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '美食' OR m.plot CONTAINS '烹饪' OR m.plot CONTAINS '料理' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及美食、烹饪或料理的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些关于艺术的电影吗？最好是关于画家或艺术家的",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '艺术' OR m.plot CONTAINS '画家' OR m.plot CONTAINS '艺术家' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及艺术、画家或艺术家的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些评分高、票房好的动作片吗？",
+        "answer": "MATCH (m:Movie) WHERE m.genre CONTAINS '动作' AND m.rating > 8.0 AND m.box_office > 1000000000 RETURN m.title, m.rating, m.box_office ORDER BY m.box_office DESC LIMIT 5\n解释：查询类型为动作、评分高于8.0且票房超过10亿的电影，按票房降序排列，返回前5部"
+    },
+    {
+        "question": "我想看一部关于家庭关系的电影，最好是亚洲导演的作品",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '家庭' AND m.director_region = '亚洲' RETURN m.title, m.director, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及家庭关系且导演来自亚洲的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些关于创业或商业成功的电影吗？",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '创业' OR m.plot CONTAINS '商业' OR m.plot CONTAINS '成功' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及创业、商业或成功主题的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "我想看一部关于时间旅行的电影，最好是近10年上映的",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '时间旅行' AND m.release_date >= date() - duration('P10Y') RETURN m.title, m.rating, m.release_date ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及时间旅行且近10年上映的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些关于校园生活的电影吗？最好是青春题材的",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '校园' AND m.genre CONTAINS '青春' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及校园生活且类型为青春的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "我想看一部关于医疗题材的电影，最好是真实事件改编的",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '医疗' AND m.plot CONTAINS '真实' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及医疗且基于真实事件改编的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些关于体育竞技的电影吗？最好是关于奥运会的",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '体育' AND m.plot CONTAINS '奥运会' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及体育竞技且与奥运会相关的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "我想看一部关于动物保护的电影",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '动物' AND m.plot CONTAINS '保护' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及动物保护的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些关于科技创新的电影吗？最好是关于未来科技的",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '科技' AND m.plot CONTAINS '创新' AND m.plot CONTAINS '未来' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及科技创新和未来科技的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "我想看一部关于心理学的电影，最好是关于多重人格的",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '心理学' AND m.plot CONTAINS '多重人格' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及心理学和多重人格的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些关于历史人物的传记电影吗？最好是关于科学家的",
+        "answer": "MATCH (m:Movie) WHERE m.genre CONTAINS '传记' AND m.plot CONTAINS '科学家' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询类型为传记且关于科学家的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "我想看一部关于太空探索的电影，最好是近5年上映的",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '太空' AND m.plot CONTAINS '探索' AND m.release_date >= date() - duration('P5Y') RETURN m.title, m.rating, m.release_date ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及太空探索且近5年上映的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些关于音乐剧的电影吗？最好是改编自百老汇的",
+        "answer": "MATCH (m:Movie) WHERE m.genre CONTAINS '音乐剧' AND m.plot CONTAINS '百老汇' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询类型为音乐剧且改编自百老汇的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "我想看一部关于侦探破案的电影，最好是系列电影",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '侦探' AND m.plot CONTAINS '破案' AND m.is_series = true RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及侦探破案且为系列电影的作品，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些关于自然灾害的电影吗？最好是关于地震的",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '自然灾害' AND m.plot CONTAINS '地震' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及自然灾害且关于地震的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "我想看一部关于人工智能伦理的电影",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '人工智能' AND m.plot CONTAINS '伦理' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及人工智能伦理的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些关于城市生活的电影吗？最好是关于大都市的",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '城市' AND m.plot CONTAINS '都市' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及城市生活和都市主题的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "我想看一部关于海洋探险的电影",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '海洋' AND m.plot CONTAINS '探险' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及海洋探险的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "能推荐一些关于社会变革的电影吗？最好是关于民权运动的",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '社会变革' AND m.plot CONTAINS '民权' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及社会变革和民权运动的电影，按评分降序排列，返回前5部"
+    },
+    {
+        "question": "我想看一部关于未来社会的电影，最好是反乌托邦题材的",
+        "answer": "MATCH (m:Movie) WHERE m.plot CONTAINS '未来社会' AND m.plot CONTAINS '反乌托邦' RETURN m.title, m.rating, m.plot ORDER BY m.rating DESC LIMIT 5\n解释：查询剧情涉及未来社会和反乌托邦题材的电影，按评分降序排列，返回前5部"
+    }
+] 
