@@ -1,0 +1,23 @@
+{
+    "ner": {
+        "train_size": 8031,
+        "val_size": 164,
+        "batch_size": 32,
+        "max_seq_len": 30,
+        "hidden_size": 64,
+        "bidirectional": true,
+        "epochs": 30,
+        "best_epoch": 30,
+        "best_f1": 0.8533,
+        "final_loss": 0.0542
+    },
+    "intent": {
+        "train_size": 492,
+        "val_size": 123,
+        "epochs": 30,
+        "best_epoch": 23,
+        "best_accuracy": 0.813,
+        "final_train_loss": 2.9738,
+        "final_val_loss": 2.4959
+    }
+}
